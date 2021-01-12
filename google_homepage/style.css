@@ -7,3 +7,103 @@
 body {
     font-family: Arial, sans-serif;
 }
+
+nav ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+nav ul li {
+    list-style: none;
+    padding: 10px;
+    font-size: 13px;
+    line-height: 24px;
+}
+
+nav li a {
+    color: rgba(0,0,0,0.87);
+    text-decoration: none;
+}
+
+nav li a:hover {
+    text-decoration: underline;
+}
+
+nav li .btn {
+    display: inline-block;
+    padding: 3px 14px;
+    border: 1px solid #4285f4;
+    border-radius: 2px;
+    color: white;
+    font-weight: bold;
+    background-color: #4683ea;
+}
+
+nav li .btn:hover {
+    text-decoration: none;
+}
+
+nav li i {
+    font-size: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+    color: grey;
+    margin: 0 5px;
+}
+
+nav li i:hover {
+    color: black;
+}
+
+main {
+    text-align: center;
+}
+
+
+footer {
+    background-color: #f2f2f2;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: rgba(0,0,0,.54);
+    font-size: 15px;
+}
+
+footer section {
+    line-height: 40px;
+    padding-left: 30px;
+    border-top: 1px solid #dadce0;
+
+}
+
+footer section ul {
+    display: flex;
+    flex-direction: row;
+}
+
+footer section li {
+    list-style: none;
+    padding-right: 30px;
+}
+
+footer section li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+footer section li a:hover {
+    text-decoration: underline;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
