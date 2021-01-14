@@ -8,8 +8,14 @@ body {
     font-family: Arial, sans-serif;
 }
 
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
 nav ul {
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -61,8 +67,83 @@ nav li i:hover {
 
 main {
     text-align: center;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+main img {
+    height: 92px;
+    margin-bottom: 10px;
+}
+
+.searching-area {
+    display: flex;
+    height: 2.8em;
+    width: 40vw;
+    border: 1px solid #dfe1e5;
+    border-radius: 2em;
+    margin: 20px auto;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.searching-area:hover,
+.searching-area:focus-within {
+    border-color: rgba(223,225,229,0);
+    box-shadow: 0 1px 6px rgba(32,33,36,.28);
+}
+
+.searching-area input {
+    width: 80%;
+    border: none;
+    outline: none;
+    line-height: 2.4em;
+    font-size: 16px;
+}
+
+.searching-area i {
+    line-height: 24px;
+    color: #9aa0a6;
+}
+
+main div button {
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    font-size: 14px;
+    line-height: 27px;
+    margin: 10px 4px;
+    padding: 0 16px;
+    height: 36px;
+    min-width: 54px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+main div button:hover {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    border: 1px solid #dadce0;
+    color: #202124;
+}
+
+main span {
+    font-size: small;
+    display: inline-block;
+    line-height: 28px;
+    margin: 10px auto;
+    color: #202124;
+}
+
+main span a {
+    text-decoration: none;
+    color: #1a0dab;
+}
 
 footer {
     background-color: #f2f2f2;
@@ -76,9 +157,8 @@ footer {
 
 footer section {
     line-height: 40px;
-    padding-left: 30px;
+    padding: 0 30px;
     border-top: 1px solid #dadce0;
-
 }
 
 footer section ul {
@@ -89,6 +169,10 @@ footer section ul {
 footer section li {
     list-style: none;
     padding-right: 30px;
+}
+
+footer section li:last-child {
+    padding-right: 0;
 }
 
 footer section li a {
@@ -106,4 +190,11 @@ footer section li a:hover {
 
 .float-right {
     float: right;
+}
+
+.credit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
