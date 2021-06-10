@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const { DateTime } = require("luxon");
+
 
 const Schema = mongoose.Schema;
 
@@ -22,7 +24,11 @@ AuthorSchema
 AuthorSchema
     .virtual('lifespan')
     .get(function () {
-        return (this.date_of_death.getYear() - this.date_of_birth.getYear()).toString();
+        let deathYear = DateTime.fromJSDate(this.date_of_death).year.toString();
+        deathYear = deathYear != 'NaN' ? deathYear : '?';
+        let birthYear = DateTime.fromJSDate(this.date_of_birth).year.toString();
+        birthYear = birthYear != 'NaN' ? birthYear : '?';
+        return `${birthYear} - ${deathYear}`;
     });
 
 // Virtual for author's URL
