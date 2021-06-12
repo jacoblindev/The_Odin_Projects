@@ -12,8 +12,7 @@
                     <!-- Contents start here... -->
                     <h1>Book: <%= title %>
                     </h1>
-                    <p>
-                        <strong>Author:</strong>
+                    <p><strong>Author:</strong>
                         <a href="<%= book.author.url %>">
                             <%= book.author.name %>
                         </a>
@@ -27,7 +26,7 @@
                     <p><strong>Genre:</strong>
                         <% book.genre.forEach((val, index)=> { %>
                             <a href="<%= val.url %>">
-                                <%= val.name %>,
+                                <%= val.name %>, 
                             </a>
                         <% }) %>
                     </p>
