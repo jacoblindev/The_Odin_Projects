@@ -24,10 +24,10 @@ AuthorSchema
 AuthorSchema
     .virtual('lifespan')
     .get(function () {
-        let deathYear = DateTime.fromJSDate(this.date_of_death).year.toString();
-        deathYear = deathYear != 'NaN' ? deathYear : '?';
-        let birthYear = DateTime.fromJSDate(this.date_of_birth).year.toString();
-        birthYear = birthYear != 'NaN' ? birthYear : '?';
+        let deathYear = DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED);
+        deathYear = deathYear != 'Invalid DateTime' ? deathYear : '?';
+        let birthYear = DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED);
+        birthYear = birthYear != 'Invalid DateTime' ? birthYear : '?';
         return `${birthYear} - ${deathYear}`;
     });
 
