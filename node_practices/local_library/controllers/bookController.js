@@ -153,13 +153,50 @@ exports.book_create_post = [
 ];
 
 // Display book delete form on GET.
-exports.book_delete_get = function (req, res) {
-    res.send('NOT IMPLEMENTED: Book delete GET');
+exports.book_delete_get = (req, res, next) => {
+    async.parallel({
+        book: (callback) => {
+            Book.findById(req.params.id).exec(callback);
+        },
+        book_copies: (callback) => {
+            BookInstance.find({ 'book': req.params.id }).exec(callback);
+        }
+    }, (err, results) => {
+        if (err) return next(err);
+        if (results.book == null) {
+            res.redirect('/catalog/books');
+        }
+        res.render('book_delete', {
+            title: 'Delete Book',
+            book: results.book,
+            book_copies: results.book_copies
+        });
+    });
 };
 
 // Handle book delete on POST.
-exports.book_delete_post = function (req, res) {
-    res.send('NOT IMPLEMENTED: Book delete POST');
+exports.book_delete_post = (req, res, next) => {
+    async.parallel({
+        book: (callback) => {
+            Book.findById(req.body.bookid).exec(callback);
+        },
+        book_copies: (callback) => {
+            BookInstance.find({ 'book': req.body.bookid }).exec(callback);
+        }
+    }, (err, results) => {
+        if (err) return next(err);
+        if (results.book_copies.length > 0) {
+            res.render('book_delete', {
+                title: 'Delete Book',
+                book: results.book,
+                book_copies: results.book_copies
+            });
+        }
+        Book.findByIdAndRemove(req.body.bookid, (err) => {
+            if (err) return next(err);
+            res.redirect('/catalog/books');
+        });
+    });
 };
 
 // Display book update form on GET.
@@ -221,13 +258,13 @@ exports.book_update_post = [
         const errors = validationResult(req);
         // Create a Book object with escaped/trimmed data and old id.
         var book = new Book({
-                title: req.body.title,
-                author: req.body.author,
-                summary: req.body.summary,
-                isbn: req.body.isbn,
-                genre: (typeof req.body.genre === 'undefined') ? [] : req.body.genre,
-                _id: req.params.id //This is required, or a new ID will be assigned!
-            });
+            title: req.body.title,
+            author: req.body.author,
+            summary: req.body.summary,
+            isbn: req.body.isbn,
+            genre: (typeof req.body.genre === 'undefined') ? [] : req.body.genre,
+            _id: req.params.id //This is required, or a new ID will be assigned!
+        });
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/error messages.
             // Get all authors and genres for form.
