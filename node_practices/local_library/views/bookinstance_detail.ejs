@@ -17,9 +17,9 @@
                         <% if (bookinstance.status == 'Available') { %>
                             <span class="text-success"><%= bookinstance.status %></span>
                         <% } else if (bookinstance.status == 'Maintenance') { %>
-                            <span class="text-warning"><%= bookinstance.status %></span>
-                        <% } else { %>
                             <span class="text-danger"><%= bookinstance.status %></span>
+                        <% } else { %>
+                            <span class="text-warning"><%= bookinstance.status %></span>
                         <% } %>
                     </p>
                     <% if (bookinstance.status != 'Available') { %>
