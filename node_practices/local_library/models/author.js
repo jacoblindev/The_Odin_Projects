@@ -20,6 +20,20 @@ AuthorSchema
         return this.family_name + ', ' + this.first_name;
     });
 
+AuthorSchema
+    .virtual('dob')
+    .get(function () { // For some reason it can't use arrow function here?!
+        let dob = DateTime.fromJSDate(this.date_of_birth).toISODate();
+        return dob;
+    });
+
+AuthorSchema
+    .virtual('dod')
+    .get(function () {
+        let dod = DateTime.fromJSDate(this.date_of_death).toISODate();
+        return dod;
+    });
+
 // Virtual for author's lifespan
 AuthorSchema
     .virtual('lifespan')
