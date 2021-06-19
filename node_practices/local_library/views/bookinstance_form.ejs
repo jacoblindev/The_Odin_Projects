@@ -23,7 +23,7 @@
                                 <option value="">Select book</option>
                                 <% book_list.forEach((book) => { %>
                                     <% if (bookinstance) { %>
-                                        <% if (book._id.toString() === bookinstance.book.toString()) { %>
+                                        <% if (book._id.toString() === selected_book.toString()) { %>
                                             <option value="<%= book._id %>" selected><%= book.title %></option>
                                         <% } else { %>
                                             <option value="<%= book._id %>"><%= book.title %></option>
@@ -40,11 +40,11 @@
                         </div>
                         <div class="form-group">
                             <label for="due_back">Date when book available:</label>
-                            <input type="date" id="due_back" class="form-control" name="due_back" value="<%= undefined===bookinstance ? '' : bookinstance.due_back%>">
+                            <input type="date" id="due_back" class="form-control" name="due_back" value="<%= undefined===bookinstance ? '' : bookinstance.due_back_date%>">
                         </div>
                         <div class="form-group">
                             <label for="status">Status:</label>
-                            <select name="status" id="ststua" class="form-select">
+                            <select name="status" id="status" class="form-select">
                                 <option value="Maintenance">Maintenance</option>
                                 <option value="Available">Available</option>
                                 <option value="Loaned">Loaned</option>
